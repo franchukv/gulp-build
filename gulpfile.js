@@ -32,8 +32,8 @@ const path = {
     js: srcPath + 'assets/js/*.js',
     images:
       srcPath +
-      'assets/images/**/*.{jpg, png, svg, webp, gif, ico, webmanifest, xml, json}',
-    fonts: srcPath + 'assets/fonts/**/*.{eot, woff, woff2, ttf, svg}',
+      'assets/images/**/*.{jpg,png,svg,webp,gif,ico,webmanifest,xml,json}',
+    fonts: srcPath + 'assets/fonts/**/*.{eot,woff,woff2,ttf,svg}',
   },
   watch: {
     html: srcPath + '**/*.html',
@@ -41,8 +41,8 @@ const path = {
     js: srcPath + 'assets/js/**/*.js',
     images:
       srcPath +
-      'assets/images/**/*.{jpg, png, svg, webp, gif, ico, webmanifest, xml, json}',
-    fonts: srcPath + 'assets/fonts/**/*.{eot, woff, woff2, ttf, svg}',
+      'assets/images/**/*.{jpg,png,svg,webp,gif,ico,webmanifest,xml,json}',
+    fonts: srcPath + 'assets/fonts/**/*.{eot,woff,woff2,ttf,svg}',
   },
   clean: './' + distPath,
 };
@@ -124,15 +124,15 @@ function js() {
 }
 
 function images() {
-  return src(path.src.images, { base: srcPath + 'assets/images/' }).pipe(
-    browserSync.reload({ stream: true })
-  );
+  return src(path.src.images, { base: srcPath + 'assets/images/' })
+    .pipe(dest(path.build.images))
+    .pipe(browserSync.reload({ stream: true }));
 }
 
 function fonts() {
-  return src(path.src.fonts, { base: srcPath + 'assets/fonts/' }).pipe(
-    browserSync.reload({ stream: true })
-  );
+  return src(path.src.fonts, { base: srcPath + 'assets/fonts/' })
+    .pipe(dest(path.build.fonts))
+    .pipe(browserSync.reload({ stream: true }));
 }
 
 function clean() {
